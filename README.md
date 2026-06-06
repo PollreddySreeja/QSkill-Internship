@@ -16,19 +16,19 @@
 
 ## About
 
-A curated portfolio of machine learning projects built during the **QSkill AI & ML Internship**. Each task demonstrates a complete ML workflow — from exploratory data analysis through model evaluation — with clean, well-documented code and professional visualizations.
+A curated portfolio of machine learning projects built during the **QSkill AI & ML Internship** (June 1 – July 1, 2026). Each project demonstrates a complete ML workflow — from exploratory data analysis through model evaluation — with clean, well-documented code and professional visualizations.
+
+> **Requirement:** Complete any 2 out of 3 tasks.
 
 <br>
 
 ## Tasks
 
-| | Task | Status |
-|:--|:-----|:------:|
-| **01** | [**Iris Flower Classification**](./Task1_Iris_Classification/) — Multi-class classification using 6 ML algorithms with 12 custom visualizations | ✅ |
-| **02** | **Movie Review Sentiment Analysis** — NLP-based sentiment classification on IMDB reviews | ⏳ |
-| **03** | **House Price Prediction** — Regression modeling with feature engineering | ⏳ |
-| **04** | **Image Classification with CNN** — Deep learning image classifier | ⏳ |
-| **05** | **Chatbot using NLP** — Conversational AI with intent recognition | ⏳ |
+| | Task | Description | Status |
+|:--|:-----|:------------|:------:|
+| **01** | [**Iris Flower Classification**](./Task1_Iris_Classification/) | Multi-class classification of iris species using 6 ML algorithms with 12 visualizations | ✅ Complete |
+| **02** | **Spam Mail Detector** | Binary classification to detect spam vs ham emails using NLP and text features | ⏳ Upcoming |
+| **03** | **House Price Prediction** | Regression modeling to predict house prices based on size, location, and features | ⏳ Upcoming |
 
 <br>
 

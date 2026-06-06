@@ -4,7 +4,7 @@
 
 **QSkill AI & ML Internship · Task 1**
 
-Classify iris flowers into three species — *Setosa*, *Versicolor*, and *Virginica* — using sepal and petal measurements.
+Classify iris flowers into three species — *Setosa*, *Versicolor*, and *Virginica* — based on measurements of their petals and sepals.
 
 [![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)](https://python.org)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
@@ -14,48 +14,60 @@ Classify iris flowers into three species — *Setosa*, *Versicolor*, and *Virgin
 
 <br>
 
-## Overview
+## Objective
 
-This project implements a complete machine learning pipeline on the classic **Iris dataset** (150 samples, 4 features, 3 classes). Six different classifiers are trained, tuned, and evaluated with comprehensive visualizations.
+Build a classifier that distinguishes between three iris flower species based on four physical measurements (sepal length, sepal width, petal length, petal width).
 
 <br>
 
-## Visualizations
+## Dataset
+
+The classic **Iris dataset** from scikit-learn (originally from the UCI Machine Learning Repository).
+
+- **150 samples** · **4 features** · **3 classes** (50 per class)
+- Perfectly balanced, no missing values
+
+<br>
+
+## Task Steps & Implementation
+
+### Step 1 · Load the dataset and explore it visually
+
+Loaded the Iris dataset using `sklearn.datasets.load_iris()` and explored it with scatter plots, histograms, and statistical summaries.
 
 <p align="center">
+  <img src="01_feature_distributions.png" width="45%" />
   <img src="04_pair_plot.png" width="45%" />
+</p>
+
+<br>
+
+### Step 2 · Split the data into training/test sets
+
+Split into **80% training** and **20% testing** using stratified sampling to maintain class balance.
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
+```
+
+<br>
+
+### Step 3 · Preprocess if needed
+
+- Checked for missing values → **None found**
+- Checked for duplicates → removed any found
+- Applied **StandardScaler** for feature scaling (zero mean, unit variance)
+
+<p align="center">
   <img src="05_correlation.png" width="45%" />
-</p>
-<p align="center">
-  <img src="08_confusion_matrix.png" width="45%" />
-  <img src="07_model_comparison.png" width="45%" />
-</p>
-<p align="center">
-  <img src="11_decision_boundaries.png" width="45%" />
-  <img src="10_feature_importance.png" width="45%" />
+  <img src="03_violin_plots.png" width="45%" />
 </p>
 
 <br>
 
-## Pipeline
+### Step 4 · Train a simple classifier
 
-```
-Load Data → EDA → Preprocess → Train/Test Split → Feature Scaling
-                                                        ↓
-                                        Train 6 Models (LR, KNN, DT, SVM, RF, GB)
-                                                        ↓
-                                        5-Fold Cross Validation
-                                                        ↓
-                                        Hyperparameter Tuning (GridSearchCV)
-                                                        ↓
-                                        Evaluate & Visualize Results
-```
-
-<br>
-
-## Models & Results
-
-All models achieve **>95% test accuracy**.
+Trained multiple classifiers including **Logistic Regression**, **K-Nearest Neighbors**, and **Decision Tree**, along with SVM, Random Forest, and Gradient Boosting for comparison.
 
 | Model | Description |
 |:------|:------------|
@@ -66,10 +78,39 @@ All models achieve **>95% test accuracy**.
 | Random Forest | Ensemble of 100 decision trees |
 | Gradient Boosting | Sequential boosted ensemble |
 
-**Key findings:**
-- Petal length and petal width are the most discriminative features
-- Iris Setosa is linearly separable from the other two species
-- No overfitting observed across any model
+Additionally performed **hyperparameter tuning** using GridSearchCV with 5-fold stratified cross-validation.
+
+<p align="center">
+  <img src="07_model_comparison.png" width="45%" />
+  <img src="12_decision_tree.png" width="45%" />
+</p>
+
+<br>
+
+### Step 5 · Evaluate with accuracy, precision, or confusion matrix
+
+Evaluated all models using **accuracy**, **precision**, **recall**, **F1-score**, and **confusion matrices**.
+
+- All models achieve **>95% accuracy** on the test set
+- **Petal features** are the most discriminative — Setosa is linearly separable
+- **No overfitting** — learning curves show proper convergence
+
+<p align="center">
+  <img src="08_confusion_matrix.png" width="45%" />
+  <img src="10_feature_importance.png" width="45%" />
+</p>
+<p align="center">
+  <img src="09_learning_curves.png" width="45%" />
+  <img src="11_decision_boundaries.png" width="45%" />
+</p>
+
+<br>
+
+## Skills Gained
+
+- **Numeric data analysis** — statistical summaries, distribution analysis, correlation study
+- **Classification modeling** — training and comparing 6 different ML algorithms
+- **Evaluating results** — accuracy, precision, recall, F1-score, confusion matrices, learning curves
 
 <br>
 
@@ -93,17 +134,6 @@ Then run **Kernel → Restart & Run All**.
 ├── generate_notebook.py               # Notebook generator script
 └── *.png                              # 12 output visualizations
 ```
-
-<br>
-
-## Skills Demonstrated
-
-- Data exploration and statistical analysis
-- 12+ visualization types (distributions, pair plots, heatmaps, 3D scatter, decision boundaries)
-- Multi-model training and comparison
-- Hyperparameter tuning with GridSearchCV
-- Model evaluation (accuracy, precision, recall, F1, confusion matrices)
-- Feature importance analysis
 
 <br>
 

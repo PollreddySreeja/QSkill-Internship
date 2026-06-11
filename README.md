@@ -28,7 +28,7 @@ A curated portfolio of machine learning projects built during the **QSkill AI & 
 |:--|:-----|:------------|:------:|
 | **01** | [**Iris Flower Classification**](./Task1_Iris_Classification/) | Multi-class classification of iris species using 6 ML algorithms with 12 visualizations | ✅ Complete |
 | **02** | [**Spam Mail Detector**](./Task2_Spam_Mail_Detector/) | Binary classification of spam vs ham SMS using NLP preprocessing, TF-IDF, and 6 ML models with 12 visualizations | ✅ Complete |
-| **03** | **House Price Prediction** | Regression modeling to predict house prices based on size, location, and features | ⏳ Upcoming |
+| **03** | [**House Price Prediction**](./Task3_House_Price_Prediction/) | Regression modeling to predict house prices using Linear Regression with a Flask web app and 7 visualizations | ✅ Complete |
 
 <br>
 
@@ -49,6 +49,12 @@ python spam_detector.py
 
 # Or run the interactive Flask web app:
 pip install flask
+python app.py
+
+# Task 3 — House Price Prediction (Flask Web App)
+cd ../Task3_House_Price_Prediction
+pip install -r requirements.txt
+python train_model.py
 python app.py
 ```
 

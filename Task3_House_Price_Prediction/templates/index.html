@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>House Price Prediction System</h1>
+            <p class="subtitle">Predict Property Prices Using Machine Learning</p>
+            <a href="#prediction-section" class="btn-primary">Predict Price Now</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- About Project Section -->
+        <section class="section about-section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="card about-card">
+                <p><strong>What problem is being solved?</strong></p>
+                <p>House price prediction helps buyers, sellers, and real estate companies estimate property values using machine learning models trained on historical housing data. This application analyzes characteristics such as income, location, population, and room count to generate accurate estimates.</p>
+                <br>
+                <div class="dataset-info">
+                    <h3>Dataset Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item"><span>Dataset:</span> California Housing Dataset</div>
+                        <div class="info-item"><span>Rows:</span> 20,640</div>
+                        <div class="info-item"><span>Features:</span> 8 Numerical</div>
+                        <div class="info-item"><span>Target:</span> Median House Value</div>
+                        <div class="info-item"><span>Missing Values:</span> 0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Workflow -->
+        <section class="section workflow-section">
+            <h2 class="section-title">Project Workflow</h2>
+            <div class="workflow-diagram">
+                <div class="step">Dataset</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">Cleaning</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">Normalization</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">Train-Test Split</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step highlight">Linear Regression</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">Prediction</div>
+                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">Evaluation</div>
+            </div>
+        </section>
+
+        <!-- Data Preprocessing & Train-Test Split -->
+        <section class="section preprocess-section">
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Data Preprocessing</h3>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check text-green"></i> Missing values checked</li>
+                        <li><i class="fa-solid fa-check text-green"></i> Duplicate records removed</li>
+                        <li><i class="fa-solid fa-check text-green"></i> Feature scaling applied</li>
+                        <li><i class="fa-solid fa-check text-green"></i> Data normalized using StandardScaler</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Train-Test Split</h3>
+                    <div class="split-info">
+                        <div class="split-box train-box">
+                            <span class="pct">80%</span>
+                            <span class="lbl">Training Data</span>
+                        </div>
+                        <div class="split-box test-box">
+                            <span class="pct">20%</span>
+                            <span class="lbl">Testing Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dataset Analysis Section (Visualizations) -->
+        <section class="section">
+            <h2 class="section-title">Dataset Analysis (Distributions)</h2>
+            <div class="grid-2">
+                <div class="card plot-card">
+                    <h3>Price Distribution</h3>
+                    <img src="{{ url_for('static', filename='images/price_distribution.png') }}" alt="Price Distribution">
+                </div>
+                <div class="card plot-card">
+                    <h3>Average Rooms Distribution</h3>
+                    <img src="{{ url_for('static', filename='images/rooms_distribution.png') }}" alt="Rooms Distribution">
+                </div>
+                <div class="card plot-card">
+                    <h3>Average Bedrooms Distribution</h3>
+                    <img src="{{ url_for('static', filename='images/bedrooms_distribution.png') }}" alt="Bedrooms Distribution">
+                </div>
+                <div class="card plot-card">
+                    <h3>House Age Distribution</h3>
+                    <img src="{{ url_for('static', filename='images/age_distribution.png') }}" alt="House Age Distribution">
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section id="prediction-section" class="section prediction-section">
+            <div class="prediction-container">
+                <div class="form-side">
+                    <h2>Predict Property Price</h2>
+                    <p>Enter property details below:</p>
+                    <form id="predictionForm">
+                        <div class="form-group">
+                            <label>Area (sq ft)</label>
+                            <input type="number" id="area" step="1" value="1500" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Bedrooms</label>
+                            <input type="number" id="bedrooms" step="1" value="3" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Bathrooms</label>
+                            <input type="number" id="bathrooms" step="1" value="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Location Score (1-10)</label>
+                            <input type="number" id="location_score" step="0.1" min="1" max="10" value="8.5" required>
+                        </div>
+                        <button type="submit" class="btn-predict" id="predictBtn">
+                            <span id="btnText">Predict Price</span>
+                            <div class="loader" id="loader" style="display: none;"></div>
+                        </button>
+                    </form>
+                </div>
+                <div class="result-side">
+                    <div class="result-box">
+                        <h3>Estimated Price:</h3>
+                        <div class="price" id="resultPrice">--</div>
+                        <p class="unit">Based on historical California housing data</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section class="section performance-section">
+            <h2 class="section-title">Model Performance</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">{{ "%.4f"|format(metrics.MSE) }}</div>
+                    <div class="metric-name">Mean Squared Error (MSE)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{ "%.4f"|format(metrics.RMSE) }}</div>
+                    <div class="metric-name">Root Mean Squared Error (RMSE)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">{{ "%.4f"|format(metrics.R2) }}</div>
+                    <div class="metric-name">R² Score</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualizations You Must Add -->
+        <section class="section advanced-visuals">
+            <h2 class="section-title">Advanced Analytics</h2>
+            
+            <div class="analysis-row">
+                <div class="card plot-card full-width">
+                    <h3>1. Correlation Heatmap</h3>
+                    <img src="{{ url_for('static', filename='images/correlation_heatmap.png') }}" alt="Correlation Heatmap">
+                    <div class="insight-box">
+                        <h4>Insights:</h4>
+                        <ul>
+                            <li>Median Income shows strongest positive correlation with house price.</li>
+                            <li>House Age has moderate impact.</li>
+                            <li>Longitude and Latitude influence location-based pricing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-row">
+                <div class="card plot-card full-width">
+                    <h3>2. Actual vs Predicted Graph</h3>
+                    <img src="{{ url_for('static', filename='images/actual_vs_predicted.png') }}" alt="Actual vs Predicted">
+                    <div class="insight-box">
+                        <h4>Interpretation:</h4>
+                        <p>Points closer to the diagonal line indicate accurate predictions. The model demonstrates strong predictive capability with minimal deviation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-row">
+                <div class="card plot-card full-width">
+                    <h3>3. Feature Importance (Linear Regression Coefficients)</h3>
+                    <img src="{{ url_for('static', filename='images/feature_importance.png') }}" alt="Feature Importance">
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack & Future -->
+        <section class="section tech-future-section">
+            <div class="grid-2">
+                <div class="card tech-card">
+                    <h3>Technology Stack</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Flask</span>
+                    </div>
+                </div>
+                <div class="card future-card">
+                    <h3>Future Enhancements</h3>
+                    <ul class="future-list">
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> Random Forest Regression</li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> XGBoost</li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> Real Estate API Integration</li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> Live Property Data</li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> Mobile Application</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Built with Flask & Scikit-Learn | QSkill Internship Task 3</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

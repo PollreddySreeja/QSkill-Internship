@@ -38,7 +38,7 @@ cells.append(md(r"""# 🌸 Iris Flower Classification
 
 ## QSkill AI & ML Internship — Task 1
 
-**Author:** [Your Name]  
+**Author:** Sreeja Pollreddy  
 **Date:** June 2026  
 **Objective:** Classify iris flowers into three species (*Setosa*, *Versicolor*, *Virginica*) based on sepal and petal measurements.
 

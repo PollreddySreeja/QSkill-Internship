@@ -61,8 +61,8 @@ Follow these steps to set up the project on your local machine:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/task3.git
-   cd task3
+   git clone https://github.com/PollreddySreeja/QSkill-Internship.git
+   cd QSkill-Internship/Task3_House_Price_Prediction
    ```
 
 2. **Install the required dependencies:**
@@ -82,7 +82,7 @@ Follow these steps to set up the project on your local machine:
    ```
 
 5. **Access the Application:**
-   Open your browser and navigate to `http://127.0.0.1:5001`.
+   Open your browser and navigate to `http://127.0.0.1:5000`.
 
 ---
 
